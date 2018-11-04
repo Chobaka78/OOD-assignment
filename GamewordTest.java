@@ -1,7 +1,7 @@
+import java.util.*;
 class GamewordTest{
 	public static void main (String [] args){
-		Gameword Tester = new Gameword();
-		Tester.anagram("ab");
-		Tester.anagram("dog");
+		Gameword wrd = new Gameword();
+		wrd.isanagram("duck", "dcuk");
 	}
 }
