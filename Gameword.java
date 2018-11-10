@@ -33,7 +33,7 @@ class Gameword {
 					  {0,0,0,0,2,0,0,0,0,0,2,0,0,0,0},
 					  {0,3,0,0,0,3,0,0,0,3,0,0,0,3,0},
 					  {0,0,1,0,0,0,1,0,1,0,0,0,1,0,0},
-					  {4,0,0,1,0,0,0,5,0,0,0,1,0,0,4},
+					  {4,0,0,1,0,0,0,2,0,0,0,1,0,0,4},
 					  {0,0,1,0,0,0,1,0,1,0,0,0,1,0,0},
 					  {0,3,0,0,0,3,0,0,0,3,0,0,0,3,0},
 					  {0,0,0,0,2,0,0,0,0,0,2,0,0,0,0},
@@ -46,7 +46,7 @@ class Gameword {
 	
 	//Calculates the point of the word
 	public int Pointvalue(int x, int y, int direction){
-		int score = points[contents.charAt(0)-65];
+		int score = 0;
 		int doubles = 0;
 		int triples = 0;
 		int pos;
@@ -59,19 +59,16 @@ class Gameword {
 				score += 2*points[pos];
 			}
 			else if (grid[x][y] == 2){
+				score += points[pos];
 				doubles += 1;
 			}
 			else if (grid[x][y] == 3){
 				score += (points[pos])*3;
 			}
 			else if (grid[x][y] == 4){
+				score += points[pos];
 				triples += 1;
 			}
-			else if (grid[x][y] == 5){
-				doubles += 1;
-			}
-			
-			System.out.println("X: " + x +"," +"Y: " + y + "," + "Grid pos: " + grid[x][y] + "," + "points : " + points[pos] + "," + "score: " + score + "," + "letter pos :" + pos + "," + "doubles : " + doubles + "," + "Triples: " + triples);
 			
 			if(direction == RIGHT){
 				x += 1;
