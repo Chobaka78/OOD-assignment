@@ -115,8 +115,9 @@ class Gameword {
 			arrange.add(first);
 		}
 		else{
-				permutation(first + word.charAt(0), word.substring(1), arrange);
-				permutation(first,word.substring(1),arrange);
+			for(int i = 0; i < word.length(); i++){
+				permutation(first + word.charAt(i), word.substring(0,i) + word.substring(i + 1, word.length()), arrange);
+			}
 		}
 		return arrange;
 	}

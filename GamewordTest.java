@@ -1,8 +1,8 @@
 import java.util.*;
 class GamewordTest{
 	public static void main (String [] args){
-		Gameword wrd = new Gameword("Depression");
-		System.out.println("Check anagram: " + wrd.isanagram("Ghanem"));
+		Gameword wrd = new Gameword("Usman");
+		System.out.println("Check anagram: " + wrd.isanagram("wahid"));
 		System.out.println("Reversed word: " +wrd.reverse());
 		System.out.println("Contents: " + wrd.toString());
 		System.out.println("Permutation of contents : " + wrd.permutation());
