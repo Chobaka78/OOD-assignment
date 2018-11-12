@@ -20,6 +20,7 @@ public class CheckersBoardTest {
 						{1,0,1,0,0,0,1,0},
 						{0,1,0,1,0,1,0,1}};
 						
+		System.out.println("This is a preset board: ");
 		CheckersBoard board = new CheckersBoard(grid);
 		System.out.println("There are " + board.colourcount(1) + " Black pieces");
 		System.out.println("There are " + board.colourcount(1) + " Red pieces");
