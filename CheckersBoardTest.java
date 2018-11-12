@@ -23,6 +23,6 @@ public class CheckersBoardTest {
 		CheckersBoard board = new CheckersBoard(grid);
 		System.out.println("There are " + board.colourcount(1) + " Black pieces");
 		System.out.println("There are " + board.colourcount(1) + " Red pieces");
-		System.out.println("This move is " + board.move(4,2,4,6));
+		System.out.println("This move is " + board.move(4,2,4,6)); // checking for a double jump
 	}
 }
