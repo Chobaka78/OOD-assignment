@@ -9,6 +9,8 @@
 
 
 public class CheckersBoardTest {
+	public static final int BLACK = 1;
+	public static final int RED = 2;
 	public static void main(String[]args){
 		// This is a preset board to test all possible moves
 		int [][] grid ={{2,0,2,0,2,0,2,0},
@@ -22,8 +24,7 @@ public class CheckersBoardTest {
 						
 		System.out.println("This is a preset board: ");
 		CheckersBoard board = new CheckersBoard(grid);
-		System.out.println("There are " + board.colourcount(1) + " Black pieces");
-		System.out.println("There are " + board.colourcount(1) + " Red pieces");
+		System.out.println("There are " + board.colourcount(BLACK) + " Black pieces");
 		System.out.println("This move is " + board.move(4,2,4,6)); // checking for a double jump
 	}
 }
