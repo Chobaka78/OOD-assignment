@@ -3,14 +3,14 @@
 import java.util.*;
 public class CheckersBoard {
 	
-public static final int BLACK = 1;
-public static final int RED = 2;
-private int [][] grid;
-							  
-public CheckersBoard(int[][] grid){ //  This is the constructor
-    this.grid = grid;
-    this.display();
-}
+	public static final int BLACK = 1;
+	public static final int RED = 2;
+	private int [][] grid;
+								  
+	public CheckersBoard(int[][] grid){ //  This is the constructor
+	    this.grid = grid;
+	    this.display();
+	}
 	
 	public int colourcount(int colour){
 		// count method that goes through the board and counts the number of pieces for the colour given

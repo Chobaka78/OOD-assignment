@@ -1,10 +1,10 @@
 /**
- * CheckersBoardTest.java
  * Usman Farooqi
+ * CheckersBoardTest.java
  * This program does has 3 methods
  * 1. count: this method counts the amount of black and red pieces on the board 
  * 2. move: this method will return true or false (if the given move is valid or not)
- * 3. display: this method will display an ASCII version of the board
+ * 3. display: this method will display a crude ASCII version of the board
  */
 
 
