@@ -47,13 +47,13 @@ public CheckersBoard(int[][] grid){ //  This is the constructor
 					grid[y1-1][x1+1] = 0; 
 					move(x1+2, y1-2, x2, y2);
 				}
-				else if (grid[y1-1][x1-1]== RED && grid[y1-2][x1-2] == 0 && grid[y1-3][x1-1] == RED && grid[y1-4][x1] == 0){ // if double jump is possible
+				else if (grid[y1-1][x1-1]== RED && grid[y1-2][x1-2] == 0 && grid[y1-3][x1-1] == RED && grid[y1-4][x1] == 0){ // if double jump is possible (left side)
 				// for double jump to be possible (there has to be a piece that can be captured followed by empty spot followed by another piece and empty spot
 					grid[y1-1][x1-1] = 0; // set the first captrued piece to empty 
 					grid[y1-3][x1-2] = 0; // set the second captured piece to empty 
 					move(x1,y1-4,x2,y2);
 				}
-				else if (grid[y1-1][x1+1]== RED && grid[y1-2][x1+2] == 0 && grid[y1-3][x1+1] == RED && grid[y1-4][x1] == 0){ // if double jump is possilbe
+				else if (grid[y1-1][x1+1]== RED && grid[y1-2][x1+2] == 0 && grid[y1-3][x1+1] == RED && grid[y1-4][x1] == 0){ // if double jump is possilbe (right side)
 					grid[y1-1][x1+1] = 0; // set the first captured piece to empty 
 					grid[y1-3][x1+2] = 0; // set the second captured piece to empty 
 					move(x1,y1-4,x2,y2);
@@ -79,12 +79,12 @@ public CheckersBoard(int[][] grid){ //  This is the constructor
 					grid[y1+1][x1+1] = 0; // set the captured piece to empty
 					move(x1+2, y1+2, x2, y2);
 				}
-				else if (grid[y1+1][x1-1]== BLACK && grid[y1+2][x1-2] == 0 && grid[y1+3][x1-1] == RED && grid[y1+4][x1] == 0){ // if double jump is possible
+				else if (grid[y1+1][x1-1]== BLACK && grid[y1+2][x1-2] == 0 && grid[y1+3][x1-1] == RED && grid[y1+4][x1] == 0){ // if double jump is possible (left side)
 					grid[y1-1][x1-1] = 0; // set the first captured piece to empty
 					grid[y1-3][x1-2] = 0; // set the second captured piece to empty
 					move(x1,y1+4,x2,y2);
 				}
-				else if (grid[y1+1][x1+1]== BLACK && grid[y1+2][x1+2] == 0 && grid[y1+3][x1+1] == RED && grid[y1+4][x1] == 0){ // if double jump is possible
+				else if (grid[y1+1][x1+1]== BLACK && grid[y1+2][x1+2] == 0 && grid[y1+3][x1+1] == RED && grid[y1+4][x1] == 0){ // if double jump is possible (right side)
 					grid[y1-1][x1+1] = 0; // set the first captured piece to empty
 					grid[y1-3][x1+2] = 0; // set the second captured piece to empty
 					move(x1,y1+4,x2,y2);
