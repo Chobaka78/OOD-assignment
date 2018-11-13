@@ -24,7 +24,8 @@ public class CheckersBoardTest {
 						
 		System.out.println("This is a preset board: ");
 		CheckersBoard board = new CheckersBoard(grid);
+		System.out.println("");
 		System.out.println("There are " + board.colourcount(BLACK) + " Black pieces");
-		System.out.println("This move is " + board.move(4,2,4,6)); // checking for a double jump
+		board.move(3,5,4,4); //checks if the given x1,y1,x2,y2 will be a valid move
 	}
 }

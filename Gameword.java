@@ -19,12 +19,7 @@ class Gameword {
 	public Gameword(){
 		this("");
 	}
-	
-	// returns the contents as a string
-	public String toString(){
-		return contents;
-	}
-	
+		
 	// Scrabble board and all the point values of the letters
 	int [][] grid =  {{4,0,0,1,0,0,0,4,0,0,0,1,0,0,4},
 					  {0,2,0,0,0,3,0,0,0,3,0,0,0,2,0},
@@ -43,6 +38,31 @@ class Gameword {
 					  {4,0,0,1,0,0,0,4,0,0,0,1,0,0,4}};
 					  
 	int [] points = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10}; // value of each alphabetical letter in order
+	
+	public String reverse(){ // reversing the contents
+		String revword = "";
+		for (int i = contents.length()-1; i >= 0; i--){ // This loop takes the original contents and reverses it by adding each letter to an empty string in reverse order
+			revword += contents.charAt(i);
+		}
+		return revword;
+	}
+	
+	// checks if a given word is an anargram from contents
+	public boolean isanagram (String anotherWord){
+		if(contents.length() != anotherWord.length()){// base case
+			return false;
+		}
+		
+		else{
+			char [] contentsarray = contents.toUpperCase().toCharArray(); // convert the contents into character array
+			char [] anagramarray = anotherWord.toUpperCase().toCharArray(); // convert the given word to character array
+			// sorts the arrays
+			Arrays.sort(contentsarray); 
+			Arrays.sort(anagramarray);
+			// checks if the arrays are equal or not
+			return Arrays.equals(contentsarray, anagramarray);
+			}
+	}
 	
 	//Calculates the point of the word
 	public int Pointvalue(int x, int y, int direction){
@@ -86,22 +106,6 @@ class Gameword {
 		}
 		return score; // return the score
 	}
-	// checks if a given word is an anargram from contents
-	public boolean isanagram (String anotherWord){
-		if(contents.length() != anotherWord.length()){// base case
-			return false;
-		}
-		
-		else{
-			char [] contentsarray = contents.toUpperCase().toCharArray(); // convert the contents into character array
-			char [] anagramarray = anotherWord.toUpperCase().toCharArray(); // convert the given word to character array
-			// sorts the arrays
-			Arrays.sort(contentsarray); 
-			Arrays.sort(anagramarray);
-			// checks if the arrays are equal or not
-			return Arrays.equals(contentsarray, anagramarray);
-			}
-	}
 	
 	// recursion functions that outputs a list of all the possible arrangements of contents 
 	public ArrayList<String> permutation(){
@@ -122,12 +126,9 @@ class Gameword {
 		return arrange;
 	}
 	
-	public String reverse(){ // reversing the contents
-		String revword = "";
-		for (int i = contents.length()-1; i >= 0; i--){ // This loop takes the original contents and reverses it by adding each letter to an empty string in reverse order
-			revword += contents.charAt(i);
-		}
-		return revword;
+	// returns the contents as a string
+	public String toString(){
+		return contents;
 	}
 
 }

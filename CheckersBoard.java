@@ -25,75 +25,95 @@ public class CheckersBoard {
 		return colourcounter;
 	}
 	
-	public boolean move(int x1, int y1, int x2, int y2){ // move method will return true or false (if move is valid)
-		if(x1 < 0 && x1 > 7 && x2 < 0 && x2 > 7  && y1 < 0 && y1 > 7 && y2 < 0 && y2 > 7 ){ // makes the move false if all values are negative
-			return false;
+	public void move(int x1, int y1, int x2, int y2){ // move method will return true or false (if move is valid)
+		if (x1 < 0 || x1 >7 || y1 < 0 || y1 > 7 || x2 < 0 || x2 >7 || y2 < 0 || y2 > 7){
+			System.out.println("This is not a valid move (False)");
+			System.out.println("");
 		}
-		else {
+		else if (Math.abs(x1-x2) == 1 && Math.abs(y1 - y2) == 1){
 			if(grid[y1][x1] == BLACK){ // checks for all black peices
 			
-				if (grid[y1 - 1][x1 - 1] == 0){ // move 1 up and 1 to the left
-					move(x1 - 1, y1 - 1, x2 , y2);
+				if (x1 > 0 && grid[y1 - 1][x1 - 1] == 0){ // move 1 up and 1 to the left
+					grid[y1-1][x1-1] = BLACK; // set the moved piece to black
+					grid[y1][x1] = 0; // set original piece to blank
 				}
 				else if(grid[y1 - 1][x1 + 1] == 0){ // move 1 up and 1 to the right
-					move(x1 + 1, y1 - 1, x2, y2);
+					grid[y1-1][x1+1] = BLACK; // set the move piece to black
+					grid[y1][x1] = 0;// set the original piece to blank
 				}
 				
-				else if(grid[y1-1][x1-1] == RED && grid[y1-2][x1-2] == 0){ // if there is a red piece that can be captured followed by empty spot (left side)
-					grid[y1-1][x1-1] = 0; // set captured piece to empty
-					move(x1-2, y1-2, x2, y2);
-				}
-				else if(grid[y1-1][x1+1] == RED && grid[y1-2][x1+2] == 0){ // if there is a red piece that can be captured followed by empty spot (right side)
-					grid[y1-1][x1+1] = 0; 
-					move(x1+2, y1-2, x2, y2);
-				}
-				else if (grid[y1-1][x1-1]== RED && grid[y1-2][x1-2] == 0 && grid[y1-3][x1-1] == RED && grid[y1-4][x1] == 0){ // if double jump is possible (left side)
-				// for double jump to be possible (there has to be a piece that can be captured followed by empty spot followed by another piece and empty spot
-					grid[y1-1][x1-1] = 0; // set the first captrued piece to empty 
-					grid[y1-3][x1-2] = 0; // set the second captured piece to empty 
-					move(x1,y1-4,x2,y2);
-				}
-				else if (grid[y1-1][x1+1]== RED && grid[y1-2][x1+2] == 0 && grid[y1-3][x1+1] == RED && grid[y1-4][x1] == 0){ // if double jump is possilbe (right side)
-					grid[y1-1][x1+1] = 0; // set the first captured piece to empty 
-					grid[y1-3][x1+2] = 0; // set the second captured piece to empty 
-					move(x1,y1-4,x2,y2);
-				}
-					
-				return true; //  if any of these moves are possible return true
 			}
 			
 			else if(grid[y1][x1] == RED){ // checking for all red pieces 
 			
 				if (grid[y1 + 1][x1 - 1] == 0){ // move 1 up and 1 to the left
-					move(x1 - 1, y1 + 1, x2 , y2);
+					grid[y1+1][x1-1] = RED; // set moved to red
+					grid[y1][x1] = 0; // set original to blank
 				}
 				else if(grid[y1 + 1][x1 + 1] == 0){  // move 1 up and 1 to the right
-					move(x1 + 1, y1 + 1, x2, y2);
+					grid[y1+1][x1+1] = RED; // set moved to red
+					grid[y1][x1] = 0; // set original to blank
 				}
-				
-				else if(grid[y1+1][x1-1] == BLACK && grid[y1-2][x1-2] == 0){ // if there is a red piece that can be captured followed by empty spot (left side)
-					grid[y1+1][x1-1] = 0; // set the captured piece to empty 
-					move(x1-2, y1+2, x2, y2);
-				}
-				else if(grid[y1+1][x1+1] == BLACK && grid[y1-2][x1+2] == 0){ //if there is a red piece that can be captured followed by empty spot (right side)
-					grid[y1+1][x1+1] = 0; // set the captured piece to empty
-					move(x1+2, y1+2, x2, y2);
-				}
-				else if (grid[y1+1][x1-1]== BLACK && grid[y1+2][x1-2] == 0 && grid[y1+3][x1-1] == RED && grid[y1+4][x1] == 0){ // if double jump is possible (left side)
-					grid[y1-1][x1-1] = 0; // set the first captured piece to empty
-					grid[y1-3][x1-2] = 0; // set the second captured piece to empty
-					move(x1,y1+4,x2,y2);
-				}
-				else if (grid[y1+1][x1+1]== BLACK && grid[y1+2][x1+2] == 0 && grid[y1+3][x1+1] == RED && grid[y1+4][x1] == 0){ // if double jump is possible (right side)
-					grid[y1-1][x1+1] = 0; // set the first captured piece to empty
-					grid[y1-3][x1+2] = 0; // set the second captured piece to empty
-					move(x1,y1+4,x2,y2);
-				}
-				
-				return true; // if all of these moves are possilbe return true
 			}
 		}
-		return false; //  if none of the moves for red or black are possilbe return false 
+		
+		else if(Math.abs(x1-x2) != 1 && (Math.abs(y1 - y2) != 1)){
+			if(grid[y1][x1] == BLACK){ // checks all black pieces
+				
+				if(x1 > 0 && grid[y1-1][x1-1] == RED && grid[y1-2][x1-2] == 0){ // if there is a red piece that can be captured followed by empty spot (left side)
+					grid[y1-1][x1-1] = 0; // set captured piece to empty
+					grid[y1-2][x1-2] = BLACK; // set moved to black
+					grid[y1][x1] = 0; // set original to blank
+				}
+				else if(x1 < 7 && grid[y1-1][x1+1] == RED && grid[y1-2][x1+2] == 0){ // if there is a red piece that can be captured followed by empty spot (right side)
+					grid[y1-1][x1+1] = 0;  // set captured to empty
+					grid[y1-2][x1+2] = BLACK; // set moved to black 
+					grid[y1][x1] = 0; // set original to empty
+				}
+				else if ( x1 > 0 && grid[y1-1][x1-1]== RED && grid[y1-2][x1-2] == 0 && grid[y1-3][x1-1] == RED && grid[y1-4][x1] == 0){ // if double jump is possible (left side)
+				// for double jump to be possible (there has to be a piece that can be captured followed by empty spot followed by another piece and empty spot
+					grid[y1-1][x1-1] = 0; // set the first captrued piece to empty 
+					grid[y1-3][x1-2] = 0; // set the second captured piece to empty 
+					grid[y1-4][x1] = BLACK; // set moved to black
+					grid[y1][x1] = 0; // set original to empty
+				}
+				else if ( x1 < 7 && grid[y1-1][x1+1]== RED && grid[y1-2][x1+2] == 0 && grid[y1-3][x1+1] == RED && grid[y1-4][x1] == 0){ // if double jump is possilbe (right side)
+					grid[y1-1][x1+1] = 0; // set the first captured piece to empty 
+					grid[y1-3][x1+2] = 0; // set the second captured piece to empty 
+					grid[y1-4][x1] = BLACK; // set moved to black
+					grid[y1][x1] = 0; // set original to empty
+				}
+			}
+			
+			else if(grid[y1][x1] == RED){ // all red pieces 
+				
+				if(x1 > 0 && grid[y1+1][x1-1] == BLACK && grid[y1-2][x1-2] == 0){ // if there is a red piece that can be captured followed by empty spot (left side)
+					grid[y1+2][x1-2] = RED; // set moved to red
+					grid[y1+1][x1-1] = 0; // set the captured piece to empty 
+					grid[y1][x1] = 0; // set original to empty
+				}
+				else if(x1 < 7 && grid[y1+1][x1+1] == BLACK && grid[y1+2][x1+2] == 0){ //if there is a red piece that can be captured followed by empty spot (right side)
+					grid[y1+1][x1+1] = 0; // set the captured piece to empty
+					grid[y1+2][x1+2] = RED; // set moved to red
+					grid[y1][x1] = 0; // set original to empty
+				}
+				else if (x1 > 0 && grid[y1+1][x1-1]== BLACK && grid[y1+2][x1-2] == 0 && grid[y1+3][x1-1] == BLACK && grid[y1+4][x1] == 0){ // if double jump is possible (left side)
+					grid[y1+1][x1-1] = 0; // set the first captured piece to empty
+					grid[y1+3][x1-2] = 0; // set the second captured piece to empty
+					grid[y1+4][x1] = RED; // set moved to red
+					grid[y1][x1] = 0; // set original to empty 
+				}
+				else if (x1 < 7 && grid[y1+1][x1+1]== BLACK && grid[y1+2][x1+2] == 0 && grid[y1+3][x1+1] == BLACK && grid[y1+4][x1] == 0){ // if double jump is possible (right side)
+					grid[y1+1][x1+1] = 0; // set the first captured piece to empty
+					grid[y1+3][x1+2] = 0; // set the second captured piece to empty
+					grid[y1+4][x1] = RED; // set moved to red
+					grid[y1][x1] = 0; // set original to empty 
+				}
+			}
+		}
+		System.out.println("This is a valid move (True)");
+		System.out.println("");
+		this.display();
 	}
 	
 	public void display(){
