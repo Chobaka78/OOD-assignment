@@ -5,7 +5,7 @@ public class CheckersBoard {
 	
 	public static final int BLACK = 1;
 	public static final int RED = 2;
-	private int [][] grid;
+	public int [][] grid;
 								  
 	public CheckersBoard(int[][] grid){ //  This is the constructor
 	    this.grid = grid;

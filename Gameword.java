@@ -53,50 +53,50 @@ class Gameword {
 		for(int i = 0; i < contents.length(); i++){
 			pos = (int)contents.charAt(i) - 65 ; // these are all the ASCII letters from A-Z (65 is subtracted for capital letters only)
 			if (grid[x][y] == 0){
-				score += points[pos];
+				score += points[pos]; //adding regular points
 			}
 			else if (grid[x][y] == 1){
-				score += 2*points[pos];
+				score += 2*points[pos]; // double letter score (multiplies the points of given letter by 2)
 			}
 			else if (grid[x][y] == 2){
-				score += points[pos];
-				doubles += 1;
+				score += points[pos]; // add regular point
+				doubles += 1; // increase the amount of double word scores by 1
 			}
 			else if (grid[x][y] == 3){
-				score += (points[pos])*3;
+				score += (points[pos])*3; // tripple letter score (multiplies the points of given letter by 3)
 			}
-			else if (grid[x][y] == 4){
-				score += points[pos];
-				triples += 1;
+			else if (grid[x][y] == 4){ 
+				score += points[pos]; // add regular points
+				triples += 1; // increase the amount of triples word score by 1
 			}
 			
-			if(direction == RIGHT){
-				x += 1;
+			if(direction == RIGHT){ 
+				x += 1; // if the given direction is right increase the x
 			}
 			else if(direction == DOWN){
-				y += 1;
+				y += 1; // if the given direction is down increase the y
 			}
 		}
 		
-		if(doubles > 0){
-			score *= (Math.pow(2,doubles));
+		if(doubles > 0){ // if the amount of doubles is greater than 1
+			score *= (Math.pow(2,doubles)); // score * (2^ amount of doubles)
 		}
-		if (triples > 0){
-			score *= (Math.pow(3,triples));
+		if (triples > 0){ // if the amount of triples is greater than 1
+			score *= (Math.pow(3,triples)); // score * (3^ amount of triples)
 		}
-		return score;
+		return score; // return the score
 	}
 	// checks if a given word is an anargram from contents
-	public boolean isanagram (String anoterWord){
-		if(contents.length() != anoterWord.length()){// base case
+	public boolean isanagram (String anotherWord){
+		if(contents.length() != anotherWord.length()){// base case
 			return false;
 		}
 		
 		else{
-			char [] contentsarray = contents.toUpperCase().toCharArray();
-			char [] anagramarray = anoterWord.toUpperCase().toCharArray();
+			char [] contentsarray = contents.toUpperCase().toCharArray(); // convert the contents into character array
+			char [] anagramarray = anotherWord.toUpperCase().toCharArray(); // convert the given word to character array
 			// sorts the arrays
-			Arrays.sort(contentsarray);
+			Arrays.sort(contentsarray); 
 			Arrays.sort(anagramarray);
 			// checks if the arrays are equal or not
 			return Arrays.equals(contentsarray, anagramarray);
@@ -111,12 +111,12 @@ class Gameword {
 	
 	public ArrayList<String> permutation(String first, String word, ArrayList<String> arrange){
 		
-		if(word.length() == 0){
+		if(word.length() == 0){ // base case
 			arrange.add(first);
 		}
 		else{
-			for(int i = 0; i < word.length(); i++){
-				permutation(first + word.charAt(i), word.substring(0,i) + word.substring(i + 1, word.length()), arrange);
+			for(int i = 0; i < word.length(); i++){ // adds the possilbe arrangements of contents to the arraylist 
+				permutation(first + word.charAt(i), word.substring(0,i) + word.substring(i + 1, word.length()), arrange); 
 			}
 		}
 		return arrange;

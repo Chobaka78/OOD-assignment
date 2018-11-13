@@ -11,7 +11,7 @@
  
 class GamewordTest{
 	public static void main (String [] args){
-		Gameword wrd = new Gameword("Usman");
+		Gameword wrd = new Gameword("Stain"); // contents
 		System.out.println("Check anagram: " + wrd.isanagram("wahid"));
 		System.out.println("Reversed word: " +wrd.reverse());
 		System.out.println("Contents: " + wrd.toString());
