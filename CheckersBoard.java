@@ -1,5 +1,7 @@
-
-
+/*
+ *Usman Farooqi
+ *CheckersBoard.java
+ */
 import java.util.*;
 public class CheckersBoard {
 	
@@ -25,10 +27,9 @@ public class CheckersBoard {
 		return colourcounter;
 	}
 	
-	public void move(int x1, int y1, int x2, int y2){ // move method will return true or false (if move is valid)
+	public boolean move(int x1, int y1, int x2, int y2){ // move method will print true or false (if move is valid)
 		if (x1 < 0 || x1 >7 || y1 < 0 || y1 > 7 || x2 < 0 || x2 >7 || y2 < 0 || y2 > 7){
-			System.out.println("This is not a valid move (False)");
-			System.out.println("");
+			return false;
 		}
 		else if (Math.abs(x1-x2) == 1 && Math.abs(y1 - y2) == 1){
 			if(grid[y1][x1] == BLACK){ // checks for all black peices
@@ -111,9 +112,8 @@ public class CheckersBoard {
 				}
 			}
 		}
-		System.out.println("This is a valid move (True)");
-		System.out.println("");
 		this.display();
+		return true;
 	}
 	
 	public void display(){

@@ -1,6 +1,6 @@
 /*
  *Usman Farooqi
- *Gamecontents.java
+ *Gameword.java
  */
 import java.util.*;
 class Gameword {
@@ -14,10 +14,6 @@ class Gameword {
 	// constructor 
 	public Gameword(String contents){
 		this.contents = contents.toUpperCase();
-	}
-	
-	public Gameword(){
-		this("");
 	}
 		
 	// Scrabble board and all the point values of the letters
@@ -65,7 +61,7 @@ class Gameword {
 	}
 	
 	//Calculates the point of the word
-	public int Pointvalue(int x, int y, int direction){
+	public int pointValue(int x, int y, int direction){
 		int score = 0;
 		int doubles = 0;
 		int triples = 0;
